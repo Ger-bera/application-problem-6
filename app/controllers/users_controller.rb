@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+  before_action :authenticate_user!
+  before_action :correct_post,only: [:edit]
+
   def show
     @user = User.find(params[:id])
     @books = @user.books
@@ -10,7 +14,7 @@ class UsersController < ApplicationController
     if @user == current_user
       render "edit"
     else
-      redirect_to user_path(@user.id)
+      redirect_to edit_user_path(@user.id)
     end
   end
 
@@ -33,5 +37,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
+  end
+
+  def correct_post
+      @user = User.find(params[:id])
+    unless @user.id == current_user.id
+      redirect_to user_path(current_user.id)
+    end
   end
 end

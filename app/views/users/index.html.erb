@@ -12,19 +12,19 @@
           </tr>
         </thead>
         <tbody>
+          <% @users.each do |users| %>
           <tr>
             <td>
-              <% @users.each do |users| %>
-                <%= attachment_image_tag(users, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", class: "user") %>
+              <%= attachment_image_tag(users, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40', class: "user") %>
             </td>
             <td>
-                <%= users.name%>
+              <%= users.name%>
             </td>
             <td>
-                <%= link_to "Show", user_path(users.id)%>
+              <%= link_to "Show", user_path(users.id), class: "user_#{users[:id]}"%>
             </td>
-              <% end %>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

@@ -1,20 +1,16 @@
  <div class="col-md-3">
       <h2>User info</h2>
-      <% users.each do |users| %>
         <%= attachment_image_tag(current_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", class: "user") %>
-      <% end %>
       <table class="table">
         <tbody>
           <tr></tr>
           <tr>
-            <% users.each do |user| %>
-              <th>name</th>
-              <th><%= current_user.name%></th>
+            <th>name</th>
+            <th><%= current_user.name%></th>
           </tr>
           <tr>
-              <th>introduction</th>
-              <th><%= current_user.introduction%></th>
-            <% end %>
+            <th>introduction</th>
+            <th><%= current_user.introduction%></th>
           </tr>
         </tbody>
       </table>

@@ -1,6 +1,6 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <%= render 'shared2/profile', users: @users, book: @newbook %>
+    <%= render 'shared2/profile', user: current_user, book: @newbook %>
     <div class="col-md-8 offset-md-1">
       <h2>Users</h2>
       <table class="table">

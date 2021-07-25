@@ -13,7 +13,7 @@
   <% end %>
 
   <div class="row">
-   <%= render 'shared2/profile', users: @users, book: @book %>
+   <%= render 'shared2/profile', user: current_user, book: @book %>
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
       <table class="table table-hover table-inverse">

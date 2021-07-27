@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_26_062015) do
+ActiveRecord::Schema.define(version: 2021_07_27_074503) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2021_07_26_062015) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -31,8 +30,7 @@ ActiveRecord::Schema.define(version: 2021_07_26_062015) do
     t.string "introduction"
     t.string "profile_image_id"
     t.string "reset_password_token"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.string "email"
   end
 
 end

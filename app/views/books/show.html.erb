@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <%= render 'shared2/profile',user: @book.user, book: @newbook %>
+    <%= render 'shared2/profile2',user: @book.user, book: @newbook %>
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
       <table class="table">
@@ -52,7 +52,7 @@
             <tr>
               <td>
                 <%= attachment_image_tag(@book.user, :profile_image, :fill, size: "40", fallback: "no_image.jpg", class: "user") %>
-                <%= link_to book_comment.user.name,user_path(@book.user.id) %>
+                <%= link_to book_comment.user.name,user_path(book_comment.user.id) %>
                 <%= book_comment.comment %>
                 <% if book_comment.user == current_user %>
                   <div class="comment-delete">

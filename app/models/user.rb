@@ -26,6 +26,20 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  def self.search(method,word)
+    if method == "forward_match"
+      where("name LIKE?","#{word}%")
+    elsif method == "backward_match"
+      where("name LIKE?","%#{word}")
+    elsif method == "perfect_match"
+      where(name: "#{word}")
+    elsif method == "partial_match"
+      where("name LIKE?","%#{word}%")
+    else
+      all
+    end
+  end
+
   attachment :profile_image
   validates :name, uniqueness: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }

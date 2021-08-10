@@ -26,34 +26,22 @@
           </tr>
         </thead>
         <tbody>
-          <% @books.each do |books| %>
+          <% @books.each do |book| %>
           <tr>
             <td>
-              <%= link_to attachment_image_tag(books.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40'), user_path(books.user.id) %>
+              <%= link_to attachment_image_tag(book.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40'), user_path(book.user.id) %>
             </td>
             <td>
-              <%= link_to books.title, book_path(books.id) %>
+              <%= link_to book.title, book_path(book.id) %>
             </td>
             <td>
-              <%= books.body%>
+              <%= book.body%>
+            </td>
+            <td id = "favorites_btns_<%= book.id%>">
+              <%= render "shared2/favorites", book: book %>
             </td>
             <td>
-                <% if books.favorited_by?(current_user) %>
-                  <p>
-                    <%= link_to book_favorites_path(books), method: :delete do %>
-                      ♥<%= books.favorites.count %>
-                    <% end %>
-                  </p>
-                <% else %>
-                  <p>
-                    <%= link_to book_favorites_path(books), method: :post do %>
-                      ♡<%= books.favorites.count %>
-                    <% end %>
-                  </p>
-                <% end %>
-            </td>
-            <td>
-              <p>コメント件数：<%= books.book_comment.count %></p>
+              <p>コメント件数：<%= book.book_comment.count %></p>
             </td>
           </tr>
           <% end %>
